@@ -1,6 +1,5 @@
 /* Contact Info */
-footer
-{background: linear-gradient(to right, #1d7dea 0%, #ee1746 100%);
+footer{background: linear-gradient(to right, #1d7dea 0%, #ee1746 100%);
     font-size: 12px;
 }
 .contact-background{

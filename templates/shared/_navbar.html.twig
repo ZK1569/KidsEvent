@@ -15,7 +15,7 @@
 
         <li>
             <a href="{{url  ('homepage.index')}}">
-                <i class='bx bx-grid-alt'></i>
+                <i class='bx bx-home'></i>
                 <span class="links_name">Accueil</span>
             </a>
             <span class="tooltip">Accueil</span>
@@ -24,13 +24,41 @@
         {# Si la personne est connecté #}
         {% if is_granted('ROLE_ADMIN') %}
         
-        <li>
-            <a href="#">
-                <i class='bx bx-desktop'></i>
-                <span class="links_name">Admin</span>
-            </a>
-            <span class="tooltip">Admin</span>
-        </li>
+            <li>
+                <a href="#">
+                    <i class='bx bx-desktop'></i>
+                    <span class="links_name">Admin</span>
+                </a>
+                <span class="tooltip">Admin</span>
+            </li>
+
+            <li>
+                <a href="{{url ('product_create')}}">
+                    <i class='bx bx-plus'></i>
+                    <span class="links_name">Ajouter un Product</span>
+                </a>
+                <span class="tooltip">Ajouter</span>
+            </li>
+
+        {% endif %}
+
+        {% if is_granted('ROLE_USER')%}
+            <li>
+                <a href="{{url ('cart_show')}}">
+                    <i class='bx bx-cart'></i>
+                    <span class="links_name">Panier</span>
+                </a>
+                <span class="tooltip">Panier</span>
+            </li>
+
+            <li>
+                <a href="{{url ('purchase_index')}}">
+                    <i class='bx bx-detail'></i>
+                    <span class="links_name">Commandes</span>
+                </a>
+                <span class="tooltip">Commandes</span>
+            </li>
+
 
         {% endif %}
         

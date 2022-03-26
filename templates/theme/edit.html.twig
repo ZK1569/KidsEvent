@@ -13,7 +13,7 @@
 {% block body %}
     <div class="container pt-5">
 
-        <h1>Edit du product {{product.name}}</h1>
+        <h1>Product Modif{{product.name}}</h1>
 
         {{form_start(formView)}}
         {{form_errors(formView)}}
@@ -38,8 +38,8 @@
 
 
         <button type="submit" class="btn btn-success">
-            <i class="fas fa-save"></i>
-            Créer le Product
+            <i class="bx bx-save"></i>
+            Fin
         </button>
 
         {{form_end(formView)}}

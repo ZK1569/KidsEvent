@@ -18,7 +18,7 @@ class HomepageController extends AbstractController
     #[Route('/', name:'homepage.index')]
     public function index():Response{
 
-        return $this->render('homepage/index.html.twig', [
+        return $this->render('homepage/home.html.twig', [
             "contenu" => $this->productRepository->findAll(),
         ]);
     }

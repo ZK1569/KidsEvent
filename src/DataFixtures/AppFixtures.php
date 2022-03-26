@@ -24,9 +24,11 @@ class AppFixtures extends Fixture
 
         $admin = new User;
         $cris = new User;
+        $vanna = new User;
 
         $hash = $this->hasher->hashPassword($admin, 'Password');
-        $hash_cris = $this->hasher->hashPassword($cris, 'Password');
+        $hash_cris = $this->hasher->hashPassword($cris, 'Cris2001');
+        $hash_vanna = $this->hasher->hashPassword($vanna, 'Vanna1999');
 
         $admin->setEmail("admin@gmail.com")
         ->setPassword($hash)
@@ -42,10 +44,18 @@ class AppFixtures extends Fixture
         ->setPhone("0695332229")
         ->setAddress("33 rue des lilas 95150");
 
+        $vanna->setEmail("vanna.1999@gmail.com")
+        ->setPassword($hash_vanna)
+        ->setFirstName("Vanna")
+        ->setLastName("BARDOT")
+        ->setPhone("0652551126")
+        ->setAddress("00 Rue Sextius Michel Paris");
+
 
 
         $manager->persist($admin);
         $manager->persist($cris);
+        $manager->persist($vanna);
         $manager->flush();
         
         
