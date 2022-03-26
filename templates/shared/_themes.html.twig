@@ -1,0 +1,8 @@
+<div class="activCol">
+    <img src="{{asset('img/Themes/' ~ product.mainPicture)}}" alt="{{product.name}}">
+    <a href="{{url ('product_show', {'slug':product.slug} )}}">
+        <div class="layer">
+            <h3>{{product.name | upper}}</h3>
+        </div>
+    </a>
+</div>

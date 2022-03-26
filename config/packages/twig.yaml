@@ -1,0 +1,10 @@
+twig:
+    default_path: '%kernel.project_dir%/templates'
+
+    # Des variable disponible dans tous les fichiers twig
+    globals:
+        cartService: "@App\\Cart\\CartService"
+
+when@test:
+    twig:
+        strict_variables: true
