@@ -115,7 +115,7 @@ h3{
     padding-top: 50px;
 
 }
-
+/* 
 .activCol{
     flex-basis: 32%;
     border-radius: 10px;
@@ -146,7 +146,6 @@ h3{
     color: #fff;
     font-size: 26px;
     bottom: 0;
-    /* left: 0%; */
     transition: translateX(-50%);
     position: absolute;
     opacity: 0;
@@ -155,4 +154,4 @@ h3{
 .layer:hover h3{
     bottom: 49%;
     opacity: 1;
-}
+} */

@@ -4,6 +4,7 @@
 	<link rel="stylesheet" href="{{asset('css/Homepage/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/Homepage/tiny-slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/Homepage/footer.css')}}">
+	<link rel="stylesheet" href="{{asset('css/Homepage/sliderhometheme.css')}}">
 {% endblock %}
 
 
@@ -54,25 +55,20 @@
 	</section>
 {% endblock %}
 
-    {% block footer %}
-        {# Add the footer #}
-        {% include "shared/_footer.html.twig" %}
-    {% endblock %}
+{% block footer %}
+	{# Add the footer #}
+	{% include "shared/_footer.html.twig" %}
+{% endblock %}
     
-    
-
-
-
 
 {% block javascripts %}
 	<script src="{{ asset('JS/Homepage/tiny-slider.js') }}"></script>
 	<script>
         var slider = tns({container: '.my-slider', 
-        items: 3, 
+        items: 4, 
         slideBy: 'page', 
-        autoplay: true,
-        gutter: 25
-
+        autoplay: false,
+		gutter: 10,
         });
 	</script>
 {% endblock %}
