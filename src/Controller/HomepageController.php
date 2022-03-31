@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ProductRepository;
+use App\Repository\SupplementRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -10,16 +11,12 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomepageController extends AbstractController
 {
 
-    public function __construct(private ProductRepository $productRepository)
-    {
-        $this->productRepository->findAll();
-    }
-
     #[Route('/', name:'homepage.index')]
-    public function index():Response{
+    public function index(ProductRepository $productRepository, SupplementRepository $supplementRepository):Response{
 
         return $this->render('homepage/home.html.twig', [
-            "contenu" => $this->productRepository->findAll(),
+            "contenu" => $productRepository->findAll(),
+            "supplement" => $supplementRepository->findAll(),
         ]);
     }
 }
