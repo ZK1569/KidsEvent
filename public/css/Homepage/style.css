@@ -76,7 +76,6 @@ p{
 }
 
 .row{
-    margin-top: 5%;
     display: flex;
     justify-content: space-between;
 }
@@ -112,7 +111,7 @@ h3{
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 4%;
 
 }
 
@@ -136,4 +135,12 @@ h3{
     margin-top: 16px;
     margin-bottom: 15px;
     text-align: left;
+}
+
+.tns-controls{
+    visibility: hidden;
+}
+
+.tns-nav{
+    visibility: hidden;
 }

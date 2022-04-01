@@ -81,16 +81,22 @@
 	<script src="{{ asset('JS/Homepage/tiny-slider.js') }}"></script>
 	<script>
         var slider = tns({container: '.my-slider', 
-        items: 4, 
+        items: 1, 
         slideBy: 'page', 
         autoplay: false,
 		gutter: 10,
+		rewind: true,
+		swipeAngle: false,
+		speed: 400,
+		autoWidth: true,
+		mouseDrag: true,		
         });
 		var slider = tns({container: '.my-slider-sup', 
         items: 3, 
         slideBy: 'page', 
         autoplay: false,
 		gutter: 10,
+		mouseDrag: true,
         });
 	</script>
 {% endblock %}
