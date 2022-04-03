@@ -19,7 +19,7 @@
         <div class="detail-box">
             {# --- type --------- #}
             <div class="type">
-                <a href="{{url ('product_show', {'slug':product.slug} )}}">{{product.name}}</a>
+                <a href="{{url ('product_show', {'slug':product.slug} )}}">{{product.name | upper}}</a>
             </div>
             {# --- price ---------#}
             <a href="#" class="price">{{product.price}} €</a>
