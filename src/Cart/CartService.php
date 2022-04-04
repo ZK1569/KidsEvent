@@ -16,6 +16,15 @@ class CartService{
         $this->productRepository = $productRepository;
     }
 
+    protected function saveCart(array $cart, $session){
+        $session->set('cart', $cart);
+    }
+
+
+    public function emplty($session){
+        $this->saveCart([], $session);
+    }
+
     public function add(int $id, $session){
 
         // 1. Retrouver le pannier dans la session
@@ -66,6 +75,9 @@ class CartService{
 
     }
 
+    /**
+     *  @return CartItem[]
+     */
     public function getDetailCartitems($session): array {
 
         $detailCart = [];
