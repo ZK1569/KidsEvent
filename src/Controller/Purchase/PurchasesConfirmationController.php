@@ -7,6 +7,7 @@ use App\Cart\CartService;
 use App\Entity\PurchaseItem;
 use App\Entity\User;
 use App\Form\CartConfirmationType;
+use App\Purchase\PurchasePersister;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -25,11 +26,13 @@ class PurchasesConfirmationController extends AbstractController{
     protected $router;
     protected $cartService;
     protected $em;
+    protected $persister;
 
-    public function __construct(CartService $cartService, EntityManagerInterface $em)
+    public function __construct(CartService $cartService, EntityManagerInterface $em, PurchasePersister $purchasePersister)
     { 
         $this->cartService = $cartService;
         $this->em = $em;
+        $this->persister = $purchasePersister;
     }
 
     #[Route('/purchase/confirm', name:"purchase_confirm")]
@@ -46,8 +49,6 @@ class PurchasesConfirmationController extends AbstractController{
             return $this->redirectToRoute('cart_show');
         }
 
-        $user = $this->getUser();
-
         $cartItems = $this->cartService->getDetailCartitems($session);
 
         if(count($cartItems) === 0){
@@ -58,28 +59,7 @@ class PurchasesConfirmationController extends AbstractController{
         /** @var Purchase */
         $purchase = $form->getData();
 
-        // Link the purchase and the user 
-        $purchase->setUser($user)
-        ->setPurchasedAt(new DateTime())
-        ->setTotal($this->cartService->getTotal($session));
-
-        $this->em->persist($purchase);
-
-        // Link the purchase and the cart
-        foreach($this->cartService->getDetailCartitems($session) as $cartItems){
-            $purchaseItem = new PurchaseItem;
-            $purchaseItem->setPurchase($purchase)
-            ->setProduct($cartItems->product)
-            ->setProductName($cartItems->product->getName())
-            ->setQuantity($cartItems->qty)
-            ->setTotal($cartItems->getTotal())
-            ->setProductPrice($cartItems->product->getPrice());
-
-            $this->em->persist($purchaseItem);
-        }
-
-
-        $this->em->flush();
+        $this->persister->storePurchase($purchase, $session);
 
         $this->cartService->emplty($session);
 
