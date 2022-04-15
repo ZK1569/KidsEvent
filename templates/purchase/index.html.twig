@@ -22,6 +22,13 @@
             </div>
         {% endfor %}
 
+        {% if purchases | length <= 0 %}
+            <h3>Pas de commande </h3>
+        {% else %}
+            
+
+        <h3>Les commandes à venir </h3>
+
         <table class="table">
             <thead>
                 <tr>
@@ -35,11 +42,47 @@
             </thead>    
             <tbody>
                 {% for p in purchases %}
+                    {% if "now"|date("d/m/Y") < p.reserveFor | date('d/m/Y')%}
+                        <tr>
+                            <td>{{p.id}}</td>
+                            <td>{{p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
+                            <td>{{p.purchasedAt | date('d/m/Y')}}</td>
+                            <td>{{p.reserveFor | date('d/m/Y')}}</td>
+                            <td>
+                                <ul>
+                                    {% for item in p.purchaseItems %}
+                                        <li>{{item.productName}} {{item.Total}} €</li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{{p.total}} €</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h3>Les commandes passée </h3>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Numero</th>
+                    <th>Adress</th>
+                    <th>Date de commande</th>
+                    <th>Date de l'anniversaire</th>
+                    <th>Themes</th>
+                    <th>Total</th>
+                </tr>
+            </thead>    
+            <tbody>
+                {% for p in purchases %}
+                {% if "now"|date("d/m/Y") > p.reserveFor | date('d/m/Y')%}
                     <tr>
                         <td>{{p.id}}</td>
                         <td>{{p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
                         <td>{{p.purchasedAt | date('d/m/Y')}}</td>
-                        <td>{{p.reserveFor | date('d/m/Y H:i')}}</td>
+                        <td>{{p.reserveFor | date('d/m/Y')}}</td>
                         <td>
                             <ul>
                                 {% for item in p.purchaseItems %}
@@ -49,9 +92,11 @@
                         </td>
                         <td>{{p.total}} €</td>
                     </tr>
+                    {% endif %}
                 {% endfor %}
             </tbody>
         </table>
+        {% endif %}
     </div>
 
 {% endblock %}
