@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ThemeController extends AbstractController
@@ -43,12 +44,22 @@ class ThemeController extends AbstractController
     public function edit ($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em, SluggerInterface $slugger){
 
         $product = $productRepository->find($id);
+        $product->prevImage = $product->getMainPicture();
 
         // pas encore fait le form ---------
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+
+            // To add img
+            if($product->getMainPicture() instanceof UploadedFile){
+                $product->getMainPicture()->move('img/Themes', $product->getMainPicture()->getClientOriginalName());
+                $product->setMainPicture($product->getMainPicture()->getClientOriginalName());
+            } else {
+                $product->setMainPicture($product->prevImage);
+            }
+
             $product->setSlug(strtolower($slugger->slug($product->getName())));
             $em->flush();
 
@@ -78,6 +89,14 @@ class ThemeController extends AbstractController
 
         if ($form->isSubmitted()){
             $product->setSlug(strtolower($slugger->slug($product->getName())));
+
+            // To add img
+            if($product->getMainPicture() instanceof UploadedFile){
+                $product->getMainPicture()->move('img/Themes', $product->getMainPicture()->getClientOriginalName());
+                $product->setMainPicture($product->getMainPicture()->getClientOriginalName());
+            } else {
+                $product->setMainPicture($product->prevImage);
+            }
 
             $em->persist($product);
             $em->flush();
