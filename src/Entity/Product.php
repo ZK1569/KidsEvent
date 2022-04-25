@@ -6,6 +6,7 @@ use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
@@ -94,12 +95,12 @@ class Product
         return $this;
     }
 
-    public function getMainPicture(): ?string
+    public function getMainPicture(): string|null|UploadedFile
     {
         return $this->main_picture;
     }
 
-    public function setMainPicture(string $main_picture): self
+    public function setMainPicture(string|null|UploadedFile $main_picture): self
     {
         $this->main_picture = $main_picture;
 

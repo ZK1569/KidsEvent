@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SupplementRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 #[ORM\Entity(repositoryClass: SupplementRepository::class)]
 class Supplement
@@ -69,12 +70,12 @@ class Supplement
         return $this;
     }
 
-    public function getMainPicture(): ?string
+    public function getMainPicture(): string|null|UploadedFile
     {
         return $this->main_picture;
     }
 
-    public function setMainPicture(string $main_picture): self
+    public function setMainPicture(string|null|UploadedFile $main_picture): self
     {
         $this->main_picture = $main_picture;
 
