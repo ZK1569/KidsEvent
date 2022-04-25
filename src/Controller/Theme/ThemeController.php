@@ -84,7 +84,7 @@ class ThemeController extends AbstractController
 
             return $this->redirectToRoute('product_show', [
                 'slug' => $product->getSlug()
-            ]);     
+            ]);
         }
 
         $formView = $form->createView();

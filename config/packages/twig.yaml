@@ -4,8 +4,6 @@ twig:
     # Des variable disponible dans tous les fichiers twig
     globals:
         cartService: "@App\\Cart\\CartService"
-    
-    form_themes: [ 'bootstrap_4_layout.html.twig' ]
 
 when@test:
     twig:

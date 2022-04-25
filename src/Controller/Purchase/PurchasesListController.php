@@ -3,7 +3,6 @@
 namespace App\Controller\Purchase;
 
 use App\Entity\User;
-use App\Repository\PurchaseRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,15 +20,6 @@ class PurchasesListController extends AbstractController{
 
         return $this->render('purchase/index.html.twig', [
             'purchases' => $user->getPurchases()
-        ]);
-
-    }
-
-    #[Route('/admin/purchases', name:"purchase_admin")]
-    public function Admin(PurchaseRepository $purchaseRepository){
-        
-        return $this->render('purchase/admin.html.twig', [
-            'purchases' => $purchaseRepository->findAll()
         ]);
 
     }
