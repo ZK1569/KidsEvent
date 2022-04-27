@@ -16,6 +16,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class SupplementController extends AbstractController{
 
+    #[Route('/supplement/{slug}', name: 'supplement_show')]
+    public function show($slug, SupplementRepository $supplementRepository)
+    {
+        // Foud the product is the DataBase
+        $supplement = $supplementRepository->findOneBy([
+            'slug' => $slug
+        ]);
+
+        // If here is nothing in the DataBase with the same slug
+        if (!$supplement) {
+            throw $this->createNotFoundException("Le produit n'existe pas");
+        }
+
+        return $this->render('supplement/show.html.twig', [
+            'supplement' => $supplement
+        ]);
+    }
+
     #[Route('/admin/supplement/create', name:'supplement_create')]
     public function create(Request $request, SluggerInterface $slugger, EntityManagerInterface $em){
 
@@ -80,5 +98,17 @@ class SupplementController extends AbstractController{
             'formView' => $formView,
             'supplement' => $supplement
         ]);
+    }
+
+    #[Route('/admin/supplement/remove/{id}', name: 'supplement_remove')]
+    public function remove(int $id, EntityManagerInterface $em, SupplementRepository $supplementRepository)
+    {
+
+        $entity = $supplementRepository->find($id);
+
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage.index');
     }
 }
