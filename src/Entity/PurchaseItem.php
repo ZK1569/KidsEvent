@@ -13,18 +13,18 @@ class PurchaseItem
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'purchaseItems')]
-    private $product;
+    #[ORM\ManyToOne(targetEntity: supplement::class, inversedBy: 'purchaseItems')]
+    private $supplement;
 
     #[ORM\ManyToOne(targetEntity: Purchase::class, inversedBy: 'purchaseItems')]
     #[ORM\JoinColumn(nullable: false)]
     private $purchase;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $productName;
+    private $supplementName;
 
     #[ORM\Column(type: 'integer')]
-    private $productPrice;
+    private $supplementPrice;
 
     #[ORM\Column(type: 'integer')]
     private $quantity;
@@ -37,14 +37,14 @@ class PurchaseItem
         return $this->id;
     }
 
-    public function getProduct(): ?Product
+    public function getsupplement(): ?supplement
     {
-        return $this->product;
+        return $this->supplement;
     }
 
-    public function setProduct(?Product $product): self
+    public function setsupplement(?supplement $supplement): self
     {
-        $this->product = $product;
+        $this->supplement = $supplement;
 
         return $this;
     }
@@ -61,26 +61,26 @@ class PurchaseItem
         return $this;
     }
 
-    public function getProductName(): ?string
+    public function getsupplementName(): ?string
     {
-        return $this->productName;
+        return $this->supplementName;
     }
 
-    public function setProductName(string $productName): self
+    public function setsupplementName(string $supplementName): self
     {
-        $this->productName = $productName;
+        $this->supplementName = $supplementName;
 
         return $this;
     }
 
-    public function getProductPrice(): ?int
+    public function getsupplementPrice(): ?int
     {
-        return $this->productPrice;
+        return $this->supplementPrice;
     }
 
-    public function setProductPrice(int $productPrice): self
+    public function setsupplementPrice(int $supplementPrice): self
     {
-        $this->productPrice = $productPrice;
+        $this->supplementPrice = $supplementPrice;
 
         return $this;
     }
