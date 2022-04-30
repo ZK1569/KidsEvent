@@ -53,8 +53,10 @@ class RegistrationFormType extends AbstractType
                 'label'=> 'Télephone',
                 'constraints' => [
                     new Length([
-                        'min' => 10,
-                        "minMessage" => "Votre numero de telepgone n'a pas 10 characters"
+                        'min' => 9,
+                        "minMessage" => "Votre numero de telephone n'a pas 10 characters",
+                        'max' => 11,
+                        'maxMessage' => "Votre numero de telephone a plus de 10 characters"
                     ])
                 ]
             ])

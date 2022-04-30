@@ -47,7 +47,7 @@ class ThemeController extends AbstractController
         $product = $productRepository->find($id);
         $product->prevImage = $product->getMainPicture();
 
-        // pas encore fait le form ---------
+        
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
