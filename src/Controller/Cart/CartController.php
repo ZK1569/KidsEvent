@@ -4,6 +4,7 @@ namespace App\Controller\Cart;
 
 
 use App\Cart\CartService;
+use App\Form\CartConfirmationType;
 use App\Repository\ProductRepository;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
@@ -24,10 +25,9 @@ class CartController extends AbstractController
     }
 
 
-    /**
-     * @Route("cart/add/{id}", name="cart_add", requirements={"id":"\d+"})
-     */
-    public function add($id, Request $request, SessionInterface $session)
+
+    #[Route('cart/add/{id}', name:"cart_add")]
+    public function add(int $id, Request $request, SessionInterface $session)
     {
         // Si le produit est dans la base de donnée 
         $product = $this->productRepository->find($id);
@@ -51,10 +51,8 @@ class CartController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("cart/delete/{id}", name="cart_delete")
-     */
-    public function delet($id, SessionInterface $session){
+    #[Route('cart/delete/{id}', name:"art_delete")]
+    public function delete(int $id, SessionInterface $session){
 
         $product = $this->productRepository->find($id);
 
@@ -72,6 +70,8 @@ class CartController extends AbstractController
 
     #[Route('/cart', name:'cart_show')]
     public function show(SessionInterface $session, CartService $cartService){
+
+        $form = $this->createForm(CartConfirmationType::class);
         
         $detailCart = $cartService->getDetailCartitems($session);
 
@@ -79,15 +79,15 @@ class CartController extends AbstractController
 
         return $this->render('cart/index.html.twig', [
             'items' => $detailCart,
-            'total' => $total
+            'total' => $total,
+            'confirmationForm' => $form->createView(),   
         ]);
     }
 
 
-    /**
-     * @Route("/cart/decrement/{id}", name="cart_decrement", requirements={"id": "\d+"})
-     */
-    public function decrement($id, SessionInterface $session) {
+
+    #[Route('/cart/decrement/{id}', name:"cart_decrement")]
+    public function decrement(int $id, SessionInterface $session) {
 
         $produit = $this->productRepository->find($id);
 
@@ -102,8 +102,5 @@ class CartController extends AbstractController
         return $this->redirectToRoute('cart_show');
 
     }
-
-    
-
 
 }

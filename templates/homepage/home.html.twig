@@ -4,6 +4,7 @@
 	<link rel="stylesheet" href="{{asset('css/Homepage/style.css')}}">
 	<link rel="stylesheet" href="{{asset('css/Homepage/tiny-slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/Homepage/footer.css')}}">
+	<link rel="stylesheet" href="{{asset('css/Homepage/sliderhometheme.css')}}">
 {% endblock %}
 
 
@@ -23,7 +24,7 @@
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt, maxime?</p>
 
 
-		{# Info sur la presentation #}
+		{# --- Info sur la presentation ------------#}
 		<div class="row">
 			<div class="infoCol">
 				<h3>Anniversaire</h3>
@@ -40,39 +41,42 @@
 		</div>
 	</section>
 
-	{# Liste des Activité possible #}
+	{# --- Liste des Activité possible ------------ #}
 	<section class="activite">
 		<h1>Nos Activités</h1>
 		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis officiis, autem provident consequuntur pariatur maxime aspernatur dolores architecto numquam aperiam fugit minima aliquam odio laboriosam vero nemo totam! Libero, facilis.</p>
-
 		<div class="row my-slider">
- 
 			{% for product in contenu %}
-                {% include "shared/_themes.html.twig"%}
+                {% include "shared/_themes.html.twig" %}
             {% endfor %}
 		</div>
 	</section>
+
+	{# --- List des Supplement possible ------------ #}
+	<section class="activite">
+		<h1>Nos Supplements</h1>
+		<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, repudiandae?</p>
+		
+		<div class="row my-slider-sup">
+			{% for sup in supplement %}
+				{% include "shared/_supplement.html.twig" %}
+			{% endfor %}
+		</div>
+	</section>
+
+
+
+
 {% endblock %}
 
-    {% block footer %}
-        {# Add the footer #}
-        {% include "shared/_footer.html.twig" %}
-    {% endblock %}
+{% block footer %}
+	{# Add the footer #}
+	{% include "shared/_footer.html.twig" %}
+{% endblock %}
     
-    
-
-
-
 
 {% block javascripts %}
 	<script src="{{ asset('JS/Homepage/tiny-slider.js') }}"></script>
-	<script>
-        var slider = tns({container: '.my-slider', 
-        items: 3, 
-        slideBy: 'page', 
-        autoplay: true,
-        gutter: 25
-
-        });
-	</script>
+	<script src="{{asset ('JS/Homepage/slider_theme.js')}}"></script>
+	<script src="{{asset ('JS/Homepage/slider_sup.js')}}"></script>
 {% endblock %}

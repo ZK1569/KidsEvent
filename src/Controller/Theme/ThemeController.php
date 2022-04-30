@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ThemeController extends AbstractController
@@ -18,7 +19,7 @@ class ThemeController extends AbstractController
 
 
     // To show the product
-    #[Route('/{slug}', name: 'product_show', priority:-1 )]
+    #[Route('/{slug}', name: 'product_show', priority: -1)]
     public function show($slug, ProductRepository $productRepository): Response
     {
         // Foud the product is the DataBase
@@ -27,7 +28,7 @@ class ThemeController extends AbstractController
         ]);
 
         // If here is nothing in the DataBase with the same slug
-        if(!$product){
+        if (!$product) {
             // Raise an excption (error)
             throw $this->createNotFoundException("Le produit n'existe pas");
         }
@@ -39,16 +40,27 @@ class ThemeController extends AbstractController
 
 
     // TO edit the product
-    #[Route('/admin/product/{id}/edit', name:'product_edit')]
-    public function edit ($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em, SluggerInterface $slugger){
+    #[Route('/admin/product/{id}/edit', name: 'product_edit')]
+    public function edit($id, ProductRepository $productRepository, Request $request, EntityManagerInterface $em, SluggerInterface $slugger)
+    {
 
         $product = $productRepository->find($id);
+        $product->prevImage = $product->getMainPicture();
 
-        // pas encore fait le form ---------
+        
         $form = $this->createForm(ProductType::class, $product);
 
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
+
+            // To add img
+            if ($product->getMainPicture() instanceof UploadedFile) {
+                $product->getMainPicture()->move('img/Themes', $product->getMainPicture()->getClientOriginalName());
+                $product->setMainPicture($product->getMainPicture()->getClientOriginalName());
+            } else {
+                $product->setMainPicture($product->prevImage);
+            }
+
             $product->setSlug(strtolower($slugger->slug($product->getName())));
             $em->flush();
 
@@ -67,8 +79,9 @@ class ThemeController extends AbstractController
 
 
     // To create a new Product
-    #[Route('/admin/product/create', name:'product_create')]
-    public function create(Request $request, SluggerInterface $slugger, EntityManagerInterface $em){
+    #[Route('/admin/product/create', name: 'product_create')]
+    public function create(Request $request, SluggerInterface $slugger, EntityManagerInterface $em)
+    {
 
         $product = new Product;
 
@@ -76,8 +89,16 @@ class ThemeController extends AbstractController
 
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()){
+        if ($form->isSubmitted()) {
             $product->setSlug(strtolower($slugger->slug($product->getName())));
+
+            // To add img
+            if ($product->getMainPicture() instanceof UploadedFile) {
+                $product->getMainPicture()->move('img/Themes', $product->getMainPicture()->getClientOriginalName());
+                $product->setMainPicture($product->getMainPicture()->getClientOriginalName());
+            } else {
+                $product->setMainPicture($product->prevImage);
+            }
 
             $em->persist($product);
             $em->flush();
@@ -89,9 +110,21 @@ class ThemeController extends AbstractController
 
         $formView = $form->createView();
 
-        return $this->render('theme/edit.html.twig',[
+        return $this->render('theme/edit.html.twig', [
             'formView' => $formView,
             'product' => $product
         ]);
+    }
+
+    #[Route('/admin/theme/remove/{id}', name: 'product_remove')]
+    public function remove(int $id, EntityManagerInterface $em, ProductRepository $productRepository)
+    {
+
+        $entity = $productRepository->find($id);
+
+        $em->remove($entity);
+        $em->flush();
+
+        return $this->redirectToRoute('homepage.index');
     }
 }

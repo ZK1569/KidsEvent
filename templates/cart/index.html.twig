@@ -55,6 +55,19 @@
                     </tr>
                 </tfoot>
             </table>
+
+
+            <h2>Confirmer votre command en remplissant ce formulaire </h2>
+
+            {{form_start(confirmationForm, {'action': url("purchase_confirm")})}}
+
+            {{form_widget(confirmationForm)}}
+
+            <button type="submit" class="btn btn-success">Je confirme !</button>
+
+            {{form_end(confirmationForm)}}
+
+
         {% else %}
             <h2>Le panier est vide</h2>
         {% endif %}

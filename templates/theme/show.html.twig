@@ -40,6 +40,7 @@
                     <a href="{{url ('cart_add', {'id':product.id})}}"><button type="button">Ajouter au panier</button></a>
                     {% if is_granted('ROLE_ADMIN') %}
                         <a href="{{url ('product_edit', {'id':product.id})}}"><button type="button">Modifier</button></a>
+                        <a href="{{url ('product_remove', {'id':product.id})}}"><button type="button" class="button-remove">Supprimer</button></a>
                     {% endif %}
 
                     {# Pour les flash apres l'ajout au pannier #}
