@@ -32,7 +32,7 @@ class SupplementType extends AbstractType
             ])
             ->add('main_picture', FileType::class, [
                 'data_class' => null,
-                'required' => true,
+                'required' => false,
                 'constraints' => $options['data']->getId()
                     ? []
                     : [
