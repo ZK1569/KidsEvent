@@ -3,17 +3,16 @@
 namespace App\Cart;
 
 use App\Entity\Product;
-use App\Repository\ProductRepository;
+use App\Repository\SupplementRepository;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class CartService{
 
 
-    protected $productRepository;
+    protected $supplementRepository;
 
-    public function __construct(ProductRepository $productRepository){
-
-        $this->productRepository = $productRepository;
+    public function __construct(SupplementRepository $supplementRepository){
+        $this->supplementRepository = $supplementRepository;
     }
 
     protected function saveCart(array $cart, $session){
@@ -61,14 +60,14 @@ class CartService{
         $total = 0;
 
         foreach($session->get('cart',[]) as $id => $qty){
-            $product = $this->productRepository->find($id);
+            $supplement = $this->supplementRepository->find($id);
 
             // Si jamais dans la session il y a un produit qui a ete supprimer de la BDD
-            if(!$product){
+            if(!$supplement){
                 continue;
             }
 
-            $total += $product->getPrice() * $qty;
+            $total += $supplement->getPrice() * $qty;
         }
 
         return $total;
@@ -83,14 +82,14 @@ class CartService{
         $detailCart = [];
 
         foreach($session->get('cart',[]) as $id => $qty){
-            $product = $this->productRepository->find($id);
+            $supplement = $this->supplementRepository->find($id);
 
             // Si jamais dans la session il y a un produit qui a ete supprimer de la BDD
-            if(!$product){
+            if(!$supplement){
                 continue;
             }
 
-            $detailCart[] = new CartItem($product, $qty);
+            $detailCart[] = new CartItem($supplement, $qty);
         }
 
         return $detailCart;
