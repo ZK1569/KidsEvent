@@ -27,7 +27,7 @@
             <thead>
                 <tr>
                     <th>Nom de la reservation</th>
-                    <th>Adress</th>
+                    <th>Adresse</th>
                     <th>Code postale</th>
                     <th>Ville</th>
                     <th>Date de reservation</th>
@@ -36,7 +36,7 @@
             </thead>    
             <tbody>
                 {% for p in purchases %}
-                    {% if "now"|date() < p.reserveFor | date()%}
+                    {% if "now"|date('Y-m-d') < p.reserveFor|date('Y-m-d')%}
                         <tr>
                             <td>{{p.fullName}}</td>
                             <td>{{p.address}}</td>

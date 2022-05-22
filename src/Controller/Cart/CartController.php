@@ -39,13 +39,7 @@ class CartController extends AbstractController
 
         $this->addFlash('success', "Le supplement a bien été ajouté au panier");
 
-        // Si jamais l'option returnToCart est vrai redirige vers le panier
-        // Elle est appeler dans le twig index.html.twig venant du templates/cart dans td pour le boutton plus.
-        if($request->query->get('returnToCart')){
-            return $this->redirectToRoute('cart_show');
-        }
-
-        return $this->redirectToRoute('homepage.index');
+        return $this->redirectToRoute('cart_show');
     }
 
     #[Route('cart/delete/supplement/{id}', name:"cart_delete_supplement")]

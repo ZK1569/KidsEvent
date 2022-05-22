@@ -42,7 +42,7 @@
             </thead>    
             <tbody>
                 {% for p in purchases %}
-                    {% if "now"|date() <= p.reserveFor|date()%}
+                    {% if "now"|date('Y-m-d') <= p.reserveFor|date('Y-m-d')%}
                         <tr>
                             <td>{{p.id}}</td>
                             <td>{{p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
@@ -77,7 +77,7 @@
             </thead>    
             <tbody>
                 {% for p in purchases %}
-                {% if "now"|date() >= p.reserveFor|date()%}
+                {% if "now"|date('Y-m-d') > p.reserveFor|date('Y-m-d')%}
                     <tr>
                         <td>{{p.id}}</td>
                         <td>{{p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
@@ -86,7 +86,7 @@
                         <td>
                             <ul>
                                 {% for item in p.purchaseItems %}
-                                    <li>{{item.supplementName}} {{item.Total}} €</li>
+                                    <li>{{item.quantity}}x {{item.supplementName}} {{item.Total}} €</li>
                                 {% endfor %}
                             </ul>
                         </td>
