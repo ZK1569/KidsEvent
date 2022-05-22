@@ -21,13 +21,13 @@
             </div>
         {% endfor %}
 
-        <h3>Les commandes à venir </h3>
+        <h3>Les commandes à venir aprés le {{"now"|date("d/m/Y")}}</h3>
 
         <table class="table">
             <thead>
                 <tr>
                     <th>Nom de la reservation</th>
-                    <th>Adress</th>
+                    <th>Adresse</th>
                     <th>Code postale</th>
                     <th>Ville</th>
                     <th>Date de reservation</th>
@@ -36,7 +36,7 @@
             </thead>    
             <tbody>
                 {% for p in purchases %}
-                    {% if "now"|date("d/m/Y") < p.reserveFor | date('d/m/Y')%}
+                    {% if "now"|date('Y-m-d') < p.reserveFor|date('Y-m-d')%}
                         <tr>
                             <td>{{p.fullName}}</td>
                             <td>{{p.address}}</td>
