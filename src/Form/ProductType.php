@@ -11,7 +11,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TimeType;
 
 class ProductType extends AbstractType
 {
@@ -26,9 +28,9 @@ class ProductType extends AbstractType
                 'label'=> 'Description de l\'activité',
                 'attr' => ['placeholder' => 'Tapez la description de l\'activité']
             ])
-            ->add('time', TextType::class, [
+            ->add('time', NumberType::class, [
                 'label'=> 'Durée de l\'activité',
-                'attr' => ['placeholder' => 'Tapez le temsp']
+                'attr' => ['placeholder' => 'Tapez le temps']
             ])
             ->add('price', MoneyType::class,[
                 'label'=> 'Prix du Theme',

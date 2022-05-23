@@ -36,6 +36,7 @@
                     <th>Adress</th>
                     <th>Date de commande</th>
                     <th>Date de l'anniversaire</th>
+                    <th>Themes</th>
                     <th>Supplement</th>
                     <th>Total</th>
                 </tr>
@@ -48,6 +49,12 @@
                             <td>{{p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
                             <td>{{p.purchasedAt | date('d/m/Y')}}</td>
                             <td>{{p.reserveFor | date('d/m/Y')}}</td>
+                            {# Theme #}
+                            <td>
+                                <ul>
+                                    <li>{{p.product.name}} ({{p.product.price}}€)</li>
+                                </ul>
+                            </td>
                             <td>
                                 <ul>
                                     {% for item in p.purchaseItems %}
@@ -72,6 +79,7 @@
                     <th>Date de commande</th>
                     <th>Date de l'anniversaire</th>
                     <th>Themes</th>
+                    <th>Supplement</th>
                     <th>Total</th>
                 </tr>
             </thead>    
@@ -83,6 +91,13 @@
                         <td>{{p.address}} <br>{{p.postalCode}}, {{p.city}}</td>
                         <td>{{p.purchasedAt | date('d/m/Y')}}</td>
                         <td>{{p.reserveFor | date('d/m/Y')}}</td>
+                        {# Theme #}
+                        <td>
+                            <ul>
+                                <li>{{p.product.name}} {{p.product.price}}€</li>
+                            </ul>
+                        </td>
+                        {# Supplement #}
                         <td>
                             <ul>
                                 {% for item in p.purchaseItems %}

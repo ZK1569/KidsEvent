@@ -28,7 +28,7 @@ class PurchasePersister extends AbstractController {
         // Link the purchase and the user 
         $purchase->setUser($user)
         ->setPurchasedAt(new DateTime())
-        ->setTotal($this->cartService->getTotal($session));
+        ->setTotal($this->cartService->getTotal($session)+ $purchase->getProduct()->getPrice()); 
 
         $this->em->persist($purchase);
 

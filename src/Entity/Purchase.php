@@ -49,6 +49,9 @@ class Purchase
     #[ORM\OneToMany(mappedBy: 'purchase', targetEntity: PurchaseItem::class, orphanRemoval: true)]
     private $purchaseItems;
 
+    #[ORM\ManyToOne(targetEntity: Product::class, inversedBy: 'purchases')]
+    private $product;
+
     public function __construct()
     {
         $this->purchaseItems = new ArrayCollection();
@@ -193,6 +196,18 @@ class Purchase
                 $purchaseItem->setPurchase(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProduct(): ?Product
+    {
+        return $this->product;
+    }
+
+    public function setProduct(?Product $product): self
+    {
+        $this->product = $product;
 
         return $this;
     }

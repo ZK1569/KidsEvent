@@ -59,13 +59,30 @@
 
             <h2>Confirmer votre command en remplissant ce formulaire </h2>
 
-            {{form_start(confirmationForm, {'action': url("purchase_confirm")})}}
+            <div class="d-lg-flex justify-content-center flex-line" >
+                {{form_start(confirmationForm, {'action': url("purchase_confirm")})}}
 
-            {{form_widget(confirmationForm)}}
+                {{form_row(confirmationForm.product)}}
+                {{form_row(confirmationForm.fullName)}}
+                <div class="row g-1 mt-2">
+                    <div class="col-md-7">
+                        {{form_row(confirmationForm.address)}}
+                    </div>  
+                    <div class="col-md-5">
+                        {{form_row(confirmationForm.postalCode)}}
+                    </div>
+                </div>
+                {{form_row(confirmationForm.city)}}
+                <div class="col-1"></div>
+                {{form_row(confirmationForm.reserve_for)}}
 
-            <button type="submit" class="btn btn-success">Je confirme !</button>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">Je confirme !</button>
+                </div>
+                {{form_end(confirmationForm)}}
+            </div>
 
-            {{form_end(confirmationForm)}}
+            
 
 
         {% else %}

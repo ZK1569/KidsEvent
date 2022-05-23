@@ -27,7 +27,7 @@ class PurchasesConfirmationController extends AbstractController{
     }
 
     #[Route('/purchase/confirm', name:"purchase_confirm")]
-    #[IsGranted("ROLE_USER", message:"Vous devez etre connecté")]
+    #[IsGranted("ROLE_USER", message:"Vous devez être connecté")]
     public function confirm(Request $request, SessionInterface $session){
 
         $form = $this->createForm(CartConfirmationType::class);
@@ -56,7 +56,6 @@ class PurchasesConfirmationController extends AbstractController{
 
         $this->addFlash('success', 'Le commande a été enregistée');
         return $this->redirectToRoute('purchase_index');
-
 
     }
 
