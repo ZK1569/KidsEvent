@@ -19,7 +19,7 @@ class ThemeController extends AbstractController
 
 
     // To show the product
-    #[Route('/{slug}', name: 'product_show', priority: -1)]
+    #[Route('/product/{slug}', name: 'product_show', priority: -1)]
     public function show($slug, ProductRepository $productRepository): Response
     {
         // Foud the product is the DataBase
