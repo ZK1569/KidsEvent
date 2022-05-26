@@ -137,6 +137,24 @@ h3{
     text-align: left;
 }
 
+.supplement-col a{
+    margin-top: 15px;
+    background-color: #f9004d;
+    color: white;
+    text-decoration: none;
+    border: 2px solid black;
+    font-weight: bold;
+    padding: 13px 30px;
+    border-radius: 30px;
+    transition: 0.4s;
+}
+
+.supplement-col a:hover{
+    color: black;
+    background-color: transparent;
+    border: 2px solid black;
+}
+
 .tns-controls{
     visibility: hidden;
 }
