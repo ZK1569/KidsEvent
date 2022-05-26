@@ -139,8 +139,9 @@ h3{
 }
 
 .supplement-col a{
-    margin-top: 15px;
-    margin-bottom: 15px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    display: flex;
     background-color: #f9004d;
     color: white;
     text-decoration: none;
