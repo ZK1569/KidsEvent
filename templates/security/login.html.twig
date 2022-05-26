@@ -50,7 +50,7 @@
     <h1>Connexion</h1>
     <form method="post">
         {% if error %}
-            <div class="error-log">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            <div class="error-log">Email et/ou mot de passe incorrect(s)</div>
         {% endif %}
         <div class="txt_field">
             <label for="inputEmail">Email</label>

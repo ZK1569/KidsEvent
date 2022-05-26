@@ -128,6 +128,7 @@ h3{
 }
 
 .supplement-col p{
+    margin-top: 15px;
     padding: 0;
 }
 
@@ -135,6 +136,25 @@ h3{
     margin-top: 16px;
     margin-bottom: 15px;
     text-align: left;
+}
+
+.supplement-col a{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    background-color: #f9004d;
+    color: white;
+    text-decoration: none;
+    border: 2px solid black;
+    font-weight: bold;
+    padding: 5px 20px;
+    border-radius: 30px;
+    transition: 0.4s;
+}
+
+.supplement-col a:hover{
+    color: black;
+    background-color: transparent;
+    border: 2px solid black;
 }
 
 .tns-controls{

@@ -13,7 +13,11 @@
 {% block body %}
     <div class="container pt-5">
     
-        <h1>Modification Produit : {{supplement.name}}</h1>
+        {% if supplement.name != "" %}
+            <h1>Modification Supplement : {{supplement.name}}</h1>
+        {% else %}
+            <h1>Nouveau Supplement : </h1>
+        {% endif %}
 
         {{form_start(formView)}}
         {{form_errors(formView)}}
