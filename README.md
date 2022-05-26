@@ -306,7 +306,7 @@ La solution devra être accessible via un navigateur web. On observe deux types 
 **Techniques :**
 
 L’application devra être accessible en ligne par un navigateur. Le choix des outils de réalisation du projet est défini : 
-Serveur web : Apache
-Langage : PHP
-Framework : Symfony 
-BDD : MySQL
+- Serveur web : Apache
+- Langage : PHP
+- Framework : Symfony 
+- BDD : MySQL
