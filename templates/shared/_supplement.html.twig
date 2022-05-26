@@ -2,6 +2,8 @@
     <img src="{{asset('img/supplement/' ~ sup.mainPicture)}}" alt="{{sup.name}}">
     <h3>
         {{sup.name | upper}} {{sup.price}}€ 
+    </h3>
+    <div class="all-button">
         {% if not is_granted('ROLE_ADMIN') %}
             <a href="{{url ('cart_add_supplement', {'id':sup.id})}}" class="btn btn-primary">Ajouter au panier</a>
         {% endif %}
@@ -9,7 +11,6 @@
             <a href="{{url ('supplement_edit', {'id':sup.id})}}">Modifier</a>
             <a href="{{url ('supplement_remove', {'id':sup.id})}}">Supprimer</a>
         {% endif %}
-        
-    </h3>
+    </div>
     <p>{{sup.shortDescription}}</p>
 </div>

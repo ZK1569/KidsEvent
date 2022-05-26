@@ -128,6 +128,7 @@ h3{
 }
 
 .supplement-col p{
+    margin-top: 15px;
     padding: 0;
 }
 
@@ -139,12 +140,13 @@ h3{
 
 .supplement-col a{
     margin-top: 15px;
+    margin-bottom: 15px;
     background-color: #f9004d;
     color: white;
     text-decoration: none;
     border: 2px solid black;
     font-weight: bold;
-    padding: 13px 30px;
+    padding: 5px 20px;
     border-radius: 30px;
     transition: 0.4s;
 }
