@@ -13,14 +13,14 @@ Webs site url : https://phpstack-778914-2652173.cloudwaysapps.com
 
 # Présentation du projet
 Ce projet a pour but de créer une application web pour l’entreprise KidsEvents.
-KidsEvents est une entreprise d’organisation d'anniversaire pour les enfants de 3 à 12 ans. L’objectif de cette application est de proposer une solution aux clients de KidsEvents qui leur permet de faire leurs réservations en ligne parmi une liste de thèmes principaux (princesse, pirates, chevalier …) auxquels peuvent être ajoutés des suppléments (ballons, machine a barbe a papa, … ).
+KidsEvents est une entreprise d’organisation d'anniversaire pour les enfants de 3 à 12 ans. L’objectif de cette application est de proposer une solution aux clients de KidsEvents qui leur permet de faire leurs réservations en ligne parmi une liste de thèmes principaux (princesse, pirates, chevalier, … ) auxquels peuvent être ajoutés des suppléments (ballons, machine a barbe a papa, … ).
 
 # La chart graphique
 
 - Le logo 
 ![logo_kids_events](https://user-images.githubusercontent.com/78727838/170513580-79a07097-b23f-47e9-bb11-b01ffd0e1f94.png)
 
-La page doit respecter le code couleur du logo et resté dans le même thème.
+La page doit respecter le code couleur du logo et rester dans le même thème.
 
 # Les fonctions - Liste des fonctions
 **Pour les parents - partie public** 
@@ -69,7 +69,7 @@ La page doit respecter le code couleur du logo et resté dans le même thème.
 
 
 
-**Un visiteur doit voir afficher la list des thèmes lorsqu’il est sur la page d’accueil  du site**
+**Un visiteur doit voir afficher la list des thèmes lorsqu’il est sur la page d’accueil du site**
 
 - Nom cas d'utilisation : Consultation des thèmes 
 - Acteur cas d'utilisation : Utilisateur
@@ -251,7 +251,7 @@ La page doit respecter le code couleur du logo et resté dans le même thème.
 
 **Un utilisateur doit avoir la possibilité de consulter la liste de tous ses anniveraire passé**
 
-- Nom cas d'utilisation : Consulter l'historique des anniversaire
+- Nom cas d'utilisation : Consulter l'historique des anniversaires
 - Acteur cas d'utilisation : Utilisateur authentifié 
 - Pré conditions :  Être identifier comme utilisateur
 - Post condition : Voir la liste des anniversaire réaliser
@@ -266,7 +266,7 @@ La page doit respecter le code couleur du logo et resté dans le même thème.
 
 **Un administrateur doit avoir la possibilité de voire la liste de tous les anniversaire à venir**
 
-- Nom cas d'utilisation : Consulter l'historique des anniversaire
+- Nom cas d'utilisation : Consulter la list des anniversaires a venir
 - Acteur cas d'utilisation : Administrateur
 - Pré conditions :  Être identifier comme Administrateur
 - Post condition : Voir la liste des anniversaire a venir
