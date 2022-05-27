@@ -17,9 +17,10 @@ KidsEvents est une entreprise d’organisation d'anniversaire pour les enfants d
 
 # La chart graphique
 
-- Le logo  ![logo_kids_events](https://user-images.githubusercontent.com/78727838/170513580-79a07097-b23f-47e9-bb11-b01ffd0e1f94.png)
+- Le logo 
+![logo_kids_events](https://user-images.githubusercontent.com/78727838/170513580-79a07097-b23f-47e9-bb11-b01ffd0e1f94.png)
 
-La page doit respecter le code couleur du logo est resté dans le même thème.
+La page doit respecter le code couleur du logo et resté dans le même thème.
 
 # Les fonctions - Liste des fonctions
 **Pour les parents - partie public** 
