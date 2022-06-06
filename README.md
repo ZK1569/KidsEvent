@@ -8,8 +8,8 @@ Webs site url : [https://phpstack-778914-2652173.cloudwaysapps.com](https://phps
 3) Les fonctions
     - Liste des fonctions
     - Description détaillée de l'ensemble des fonctions
-5) Le modèle des données
-6) Les contraintes 
+4) Le modèle des données
+5) Les contraintes 
 
 # Présentation du projet
 Ce projet a pour but de créer une application web pour l’entreprise KidsEvents.
@@ -58,7 +58,7 @@ La page doit respecter le code couleur du logo et rester dans le même thème.
   - La page d’accueil s’affiche avec les pages accessibles
 - Exceptions:
   - L’utilisateur commet une erreur sur la saisie de l’identifiant ou du mot de passe
-  - Le système en informe l’utilisateur, retour à l'étape 1
+  - Le système en informe l’utilisateur, retour à l'étape 2
 
 
 <img width="600" alt="Capture d’écran 2022-05-26 à 14 50 28" src="https://user-images.githubusercontent.com/78727838/170517497-4e567fbd-7946-4444-8f51-746d4a0e0d6a.png">
